@@ -9,7 +9,8 @@ interface ContactInstance extends Model {
 
 const Contact = sequelize.define<ContactInstance>('contacts', {
   uuid: {
-    type: 'VARCHAR(36)',
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
     allowNull: false,
     unique: true,
