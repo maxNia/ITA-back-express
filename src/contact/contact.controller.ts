@@ -3,8 +3,17 @@ import * as contactService from './contact.services';
 
 export function create(req: Request, res: Response, next: NextFunction) {
   try {
-    contactService.addContact(req.body);
+    contactService.createContact(req.body);
     res.status(201).send('Created');
+  } catch(e: any) {
+    next(e);
+  }
+}
+
+export async function getAll(req: Request, res: Response, next: NextFunction) {
+  try {
+    const contacts = await contactService.getAll();
+    res.status(200).send(contacts)
   } catch(e: any) {
     next(e);
   }
