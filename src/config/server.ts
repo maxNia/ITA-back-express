@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { errorHandler } from '../middlewares/error';
 import userRouters from '../user/user.routers';
 import contactRouters from '../contact/contact.routers';
+import listRouters from '../list/list.routers';
 import bodyParser from 'body-parser';
 
 const app = express();
@@ -10,6 +11,7 @@ const app = express();
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
+  res.setHeader('Access-Control-Allow-Methods', '*');
   next();
 });
 
@@ -18,6 +20,7 @@ app.use(bodyParser.json());
 
 
 app.use(userRouters);
+app.use(listRouters)
 app.use(contactRouters);
 app.use(errorHandler);
 
