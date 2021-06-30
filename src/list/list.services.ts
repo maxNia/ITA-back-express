@@ -19,7 +19,7 @@ export async function getContactsByListId(id: string) {
   if (!list) {
     throw new Error('NOT_FOUND');
   }
-  await list.getContacts({raw: true, attributes: ['name', 'email']});
+  return await list.getContacts({raw: true, attributes: ['name', 'email']});
 }
 
 export async function addContact(body: IUpdateList) {
@@ -29,5 +29,6 @@ export async function addContact(body: IUpdateList) {
   if (!list || !contact) {
     throw new Error('NOT_FOUND');
   }
-  list.addContact(contact);
+  await list.addContact(contact);
+  return list.getContacts({raw: true, attributes: ['name', 'email']});
 }

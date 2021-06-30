@@ -23,6 +23,4 @@ const List = sequelize.define<ListInstance>('lists', {
   },
 });
 
-
-
 export default List;

@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import * as contactService from './contact.services';
 
-export function createContact(req: Request, res: Response, next: NextFunction) {
+export async function createContact(req: Request, res: Response, next: NextFunction) {
   try {
-    contactService.createContact(req.body);
+    await contactService.createContact(req.body);
     res.status(201).send('Created');
   } catch(e: any) {
     next(e);

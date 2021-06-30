@@ -6,7 +6,7 @@ export async function createContact(body: IAddContact) {
 }
 
 export async function getContacts() {
-  return await Contact.findAll({
+  return Contact.findAll({
     attributes: ['uuid', 'name', 'email'],
     raw: true,
   });

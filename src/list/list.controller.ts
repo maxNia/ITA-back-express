@@ -28,9 +28,10 @@ export async function getContactsByListId(req: Request, res: Response, next: Nex
   }
 }
 
-export function addContact(req: Request, res: Response, next: NextFunction) {
+export async function addContact(req: Request, res: Response, next: NextFunction) {
   try {
-    listService.addContact(req.body);
+    const contacts = await listService.addContact(req.body);
+    res.status(200).send(contacts);
   } catch(e: any) {
     next(e);
   }
