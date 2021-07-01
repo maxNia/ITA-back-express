@@ -20,7 +20,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
 app.use(listRouters)
 app.use(contactRouters);
 app.use(errorHandler);

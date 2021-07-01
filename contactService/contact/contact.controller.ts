@@ -5,7 +5,7 @@ export async function createContact(req: Request, res: Response, next: NextFunct
   try {
     await contactService.createContact(req.body);
     res.status(201).send('Created');
-  } catch(e: any) {
+  } catch(e) {
     next(e);
   }
 }
@@ -14,7 +14,7 @@ export async function getContacts(req: Request, res: Response, next: NextFunctio
   try {
     const contacts = await contactService.getContacts();
     res.status(200).send(contacts)
-  } catch(e: any) {
+  } catch(e) {
     next(e);
   }
 }
