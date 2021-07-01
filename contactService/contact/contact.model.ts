@@ -1,7 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../config/database';
-import List from '../list/list.model';
-import ListOfContacts from '../listOfContacts/listOfContacts.model';
 
 interface ContactInstance extends Model {
   uuid: string;
@@ -31,8 +29,5 @@ const Contact = sequelize.define<ContactInstance>('contacts', {
     }
   }
 });
-
-Contact.belongsToMany(List, {through: ListOfContacts});
-List.belongsToMany(Contact, {through: ListOfContacts});
 
 export default Contact;
