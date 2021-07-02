@@ -21,7 +21,7 @@ export async function getLists(req: Request, res: Response, next: NextFunction) 
 
 export async function getContactsByListId(req: Request, res: Response, next: NextFunction) {
   try {
-    const contacts = await listService.getContactsByListId(req.params.id);
+    const contacts = await listService.getContactsByListId(req.body.id);
     res.status(200).send(contacts);
   } catch(e) {
     next(e);
