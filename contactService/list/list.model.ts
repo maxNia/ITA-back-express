@@ -1,14 +1,17 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from "../config/database";
+import sequelize from '../config/database';
 
 interface ListInstance extends Model {
   uuid: string;
   name: string;
+  getContacts: any;
+  addContact: any;
 }
 
 const List = sequelize.define<ListInstance>('lists', {
   uuid: {
-    type: 'VARCHAR(36)',
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
     allowNull: false,
     unique: true,
@@ -19,9 +22,5 @@ const List = sequelize.define<ListInstance>('lists', {
     unique: true,
   },
 });
-
-sequelize.sync()
-.then(res => console.log('we in'))
-.catch(error => console.error(error));
 
 export default List;

@@ -5,6 +5,7 @@ interface ContactInstance extends Model {
   uuid: string;
   name: string;
   email: string;
+  addList: any;
 }
 
 const Contact = sequelize.define<ContactInstance>('contacts', {
@@ -28,9 +29,5 @@ const Contact = sequelize.define<ContactInstance>('contacts', {
     }
   }
 });
-
-sequelize.sync()
-.then(res => console.log('we in'))
-.catch(error => console.error(error));
 
 export default Contact;
