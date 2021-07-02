@@ -1,12 +1,11 @@
-import axios from 'axios';
-import { contactService } from '../config';
+import { instance as axios } from '../config/axios';
 import { transporter } from '../config/nodemailer';
 import { IContactBody, IRequestBody } from './email.interfaces';
 
 export async function sendToContactsByListId(body: IRequestBody) {
   let contacts;
   try {
-    contacts = await axios.post(`${contactService}/list/getContacts`, {id: body.id});
+    contacts = await axios.post('/list/getContacts', {id: body.id});
   } catch (err) {
       throw new Error('NOT_FOUND');
   }

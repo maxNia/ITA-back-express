@@ -5,8 +5,6 @@ import emailRouters from '../email/email.routers';
 
 const app = express();
 
-export const contactService = 'http://127.0.0.1:3000';
-
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
